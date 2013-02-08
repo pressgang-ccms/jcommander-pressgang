@@ -9,33 +9,33 @@
 	the specific language governing permissions and limitations under the License. -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jboss.pressgang.ccms</groupId>
-	<artifactId>jcommander-extended</artifactId>
-	<packaging>jar</packaging>
-	<name>JCommander</name>
-	<version>1.24-SNAPSHOT</version>
-	<description>A Java framework to parse command line options with annotations.</description>
-	<url>http://beust.com/jcommander</url>
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jboss.pressgang.ccms</groupId>
+    <artifactId>jcommander-extended</artifactId>
+    <packaging>jar</packaging>
+    <name>JCommander</name>
+    <version>1.24-SNAPSHOT</version>
+    <description>A Java framework to parse command line options with annotations.</description>
+    <url>http://beust.com/jcommander</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-	<developers>
-		<developer>
-			<name>Cedric Beust</name>
-		</developer>
-	</developers>
+    <developers>
+        <developer>
+            <name>Cedric Beust</name>
+        </developer>
+    </developers>
 
-	<parent>
-		<groupId>org.jboss.pressgang</groupId>
-		<artifactId>pressgang-parent</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.jboss.pressgang</groupId>
+        <artifactId>pressgang-parent</artifactId>
+        <version>1.5</version>
+    </parent>
 
 </project>
