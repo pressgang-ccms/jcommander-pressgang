@@ -1,15 +1,11 @@
 package com.beust.jcommander.internal;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Arrays;
 
 import com.beust.jcommander.ParameterException;
 
 public class DefaultConsole implements Console {
-
-    private final InputStreamReader isr = new InputStreamReader(System.in);
-    private final BufferedReader in = new BufferedReader(isr);
 
     public void print(String msg) {
         System.out.print(msg);
@@ -21,8 +17,31 @@ public class DefaultConsole implements Console {
 
     public char[] readPassword() {
         try {
-            String result = in.readLine();
-            return result.toCharArray();
+            char[] buf;
+            char[] tempBuf;
+            buf = tempBuf = new char[128];
+
+            char c;
+            int offset = 0;
+            int bufferSpace = buf.length;
+            while ((c = (char) System.in.read()) != '\n') {
+                if (--bufferSpace < 0) {
+                    // Copy the data to the temporary buffer
+                    tempBuf = buf;
+                    // Increase the size of the buffer
+                    buf = new char[offset + 128];
+                    bufferSpace = buf.length - offset - 1;
+                    // Copy the temp buffer back into the normal buffer
+                    System.arraycopy(tempBuf, 0, buf, 0, offset);
+                    // Clean out the temporary buffer
+                    Arrays.fill(tempBuf, ' ');
+                }
+                buf[offset++] = c;
+            }
+
+            char[] retValue = new char[offset];
+            System.arraycopy(buf, 0, retValue, 0, offset);
+            return retValue;
         } catch (IOException e) {
             throw new ParameterException(e);
         }
@@ -30,8 +49,12 @@ public class DefaultConsole implements Console {
 
     public String readLine() {
         try {
-            String result = in.readLine();
-            return result;
+            char c;
+            final StringBuilder line = new StringBuilder();
+            while ((c = (char) System.in.read()) != '\n') {
+                line.append(c);
+            }
+            return line.toString();
         } catch (IOException e) {
             throw new ParameterException(e);
         }
