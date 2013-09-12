@@ -723,6 +723,13 @@ public class JCommander {
     }
     int result = va.processVariableArity(pd.getParameter().names()[0],
         currentArgs.toArray(new String[0]));
+
+    // Add the values to the parameter description
+    for (int j = index + 1; j <= result; j++) {
+       pd.addValue(trim(args[index + j]));
+       m_requiredFields.remove(pd.getField());
+    }
+
     return result;
   }
 
