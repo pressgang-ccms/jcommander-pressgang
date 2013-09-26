@@ -645,7 +645,7 @@ public class JCommander {
             //
             // Regular (non-command) parsing
             //
-            List mp = getMainParameter(arg);
+            Collection mp = getMainParameter(arg);
             String value = arg;
             Object convertedValue = value;
 
@@ -793,14 +793,14 @@ public class JCommander {
    * @param arg the arg that we're about to add (only passed here to output a meaningful
    * error message).
    */
-  private List<?> getMainParameter(String arg) {
+  private Collection<?> getMainParameter(String arg) {
     if (m_mainParameterField == null) {
       throw new ParameterException(
           "Was passed main parameter '" + arg + "' but no main parameter was defined");
     }
 
     try {
-      List result = (List) m_mainParameterField.get(m_mainParameterObject);
+        Collection result = (Collection) m_mainParameterField.get(m_mainParameterObject);
       if (result == null) {
         result = Lists.newArrayList();
         if (! List.class.isAssignableFrom(m_mainParameterField.getType())) {
