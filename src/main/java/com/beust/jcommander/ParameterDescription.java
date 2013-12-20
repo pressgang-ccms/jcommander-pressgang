@@ -206,7 +206,7 @@ public class ParameterDescription {
 
     private boolean isMultiOption() {
         Class<?> fieldType = m_field.getType();
-        return fieldType.equals(List.class) || fieldType.equals(Set.class) || isDynamicParameter(m_field);
+        return List.class.isAssignableFrom(fieldType) || Set.class.isAssignableFrom(fieldType) || isDynamicParameter(m_field);
     }
 
     private boolean isDynamicParameter(Field field) {

@@ -447,7 +447,7 @@ public class JCommander {
      * @return the file content as a string.
      */
     private static List<String> readFile(String fileName) {
-        List<String> result = Lists.newArrayList();
+        List<String> result = Lists.newLinkedList();
 
         try {
             BufferedReader bufRead = new BufferedReader(new FileReader(fileName));
